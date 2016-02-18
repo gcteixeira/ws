@@ -56,44 +56,41 @@ public class Teste_Itograss {
 
 		WebElement tablePesquisasSelecinarCliente = fluentWait(By.xpath("/html/body/div[7]/div[2]/div[4]/button/span"));
 		tablePesquisasSelecinarCliente.click();
-
+		
+		Thread.sleep(2000);
+		
 		// selecionar a forma de pagamento
 		Select selectBox = new Select(fluentWait(By.xpath("//*[@id='cmbTipoCobranca']")));
 		selectBox.getAllSelectedOptions();
-		selectBox.selectByIndex(1);
+		selectBox.selectByIndex(6);
 		
-		
+		// Numero pedido cliente
 		WebElement numeroPedidoCliente = fluentWait(By.id("numPedidoCliente"));
 		Thread.sleep(2000);
 		numeroPedidoCliente.click();
 		numeroPedidoCliente.sendKeys("21321312");
-		
-		while(!numeroPedidoCliente.getText().equals("")){
-			if(!numeroPedidoCliente.getText().equals("21321312")){
-				System.out.println("esta aguardando preencher");
-				continue;
-			}
-			numeroPedidoCliente.sendKeys("21321312");
-			break;
-		}
-		
+//		
+//		while(!numeroPedidoCliente.getText().equals("")){
+//			if(!numeroPedidoCliente.getText().equals("21321312")){
+//				System.out.println("esta aguardando preencher");
+//				continue;
+//			}
+//			numeroPedidoCliente.sendKeys("21321312");
+//			break;
+//		}
+//		
+		Thread.sleep(2000);
 
 		// Abre a pesquisa de produto na Grid
 		Actions action = new Actions(driver);
 		WebElement pesquisasSelecinarProduto = driver.findElement(By.xpath("//*[@id='produtos']/div/div[4]/div/div/div[1]"));
-		Thread.sleep(2000);
 		pesquisasSelecinarProduto.click();
 
-		System.out.println("teste 1");
 		Thread.sleep(2000);
-		//pesquisasSelecinarProduto.sendKeys(Keys.ENTER);
-		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div/div[1]"))).sendKeys(Keys.ENTER);
-		//*[@id="produtos"]/div/div[4]/div/div/div[1]
-		//action.doubleClick(pesquisasSelecinarProduto).perform();
-		System.out.println("teste 2");
-
-	
-
+		
+		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div"))).sendKeys(Keys.ENTER);
+		//action.doubleClick(pesquisasSelecinarProduto).perform();		//*[@id="produtos"]/div/div[4]/div/div
+		
 		WebElement pesquisasSelecinarProdutoDaGrid = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div/div[1]/a/span"));
 		pesquisasSelecinarProdutoDaGrid.click();
 
@@ -114,12 +111,40 @@ public class Teste_Itograss {
 
 		WebElement gripquantidadepedido1 = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div"));
 		gripquantidadepedido1.click();
+		
+		Thread.sleep(2000);
 
 		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div"))).sendKeys(Keys.ENTER);
+		
+		//Coloca valor na celula de quantidade de produtos
 
 		WebElement gripquantidadepedido2 = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[3]/input"));
 		gripquantidadepedido2.sendKeys("10");
 
+		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div"))).sendKeys(Keys.TAB);
+		
+		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[4]"))).sendKeys(Keys.TAB);
+		
+		// Numero pedido cliente no produto
+		
+		WebElement gridNumeroPedidoCliente = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[9]"));
+		//gridNumeroPedidoCliente.click();
+		
+			
+		Thread.sleep(12000);
+		
+		//action.doubleClick(gridNumeroPedidoCliente).perform();
+//		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[9]"))).sendKeys(Keys.ENTER);
+		
+		Thread.sleep(4000);
+		System.out.println("teste 1");
+	//	action.doubleClick(gridNumeroPedidoCliente).perform();
+		Thread.sleep(2000);
+		System.out.println("teste 2");
+		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[9]"))).sendKeys(Keys.TAB);
+		//action.doubleClick(gridNumeroPedidoCliente).perform();
+	//	gridNumeroPedidoCliente1.sendKeys("101"); 
+		
 		WebElement expandirEntrega = fluentWait(By.xpath("//*[@id='entregaPanel']/h3/span[1]"));
 		expandirEntrega.click();
 
