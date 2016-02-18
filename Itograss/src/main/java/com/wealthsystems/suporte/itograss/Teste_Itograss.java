@@ -69,16 +69,7 @@ public class Teste_Itograss {
 		Thread.sleep(2000);
 		numeroPedidoCliente.click();
 		numeroPedidoCliente.sendKeys("21321312");
-//		
-//		while(!numeroPedidoCliente.getText().equals("")){
-//			if(!numeroPedidoCliente.getText().equals("21321312")){
-//				System.out.println("esta aguardando preencher");
-//				continue;
-//			}
-//			numeroPedidoCliente.sendKeys("21321312");
-//			break;
-//		}
-//		
+
 		Thread.sleep(2000);
 
 		// Abre a pesquisa de produto na Grid
@@ -89,7 +80,6 @@ public class Teste_Itograss {
 		Thread.sleep(2000);
 		
 		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div"))).sendKeys(Keys.ENTER);
-		//action.doubleClick(pesquisasSelecinarProduto).perform();		//*[@id="produtos"]/div/div[4]/div/div
 		
 		WebElement pesquisasSelecinarProdutoDaGrid = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div/div[1]/a/span"));
 		pesquisasSelecinarProdutoDaGrid.click();
@@ -123,24 +113,41 @@ public class Teste_Itograss {
 
 		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div"))).sendKeys(Keys.TAB);
 		
-		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[4]"))).sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+		
+		
+		//Coloca o  Preço final 
+		
+		WebElement gridPrecoFinal= fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[5]")); 
+		gridPrecoFinal.click();
+		action.doubleClick(gridPrecoFinal);
+		
+		WebElement gridPrecoFinal1= fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[5]/input")); 
+		gridPrecoFinal1.sendKeys("10");
+		
+		Thread.sleep(2000);
+
 		
 		// Numero pedido cliente no produto
-		
+		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[5]/input"))).sendKeys(Keys.TAB);
+		Thread.sleep(2000);
 		WebElement gridNumeroPedidoCliente = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[9]"));
-		//gridNumeroPedidoCliente.click();
+		gridNumeroPedidoCliente.click();
 		
+		action.doubleClick(gridNumeroPedidoCliente);
+		gridNumeroPedidoCliente.clear();
+		gridNumeroPedidoCliente.sendKeys("456");
 			
-		Thread.sleep(12000);
-		
+
+		System.out.println("teste 1");	
 		//action.doubleClick(gridNumeroPedidoCliente).perform();
 //		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[9]"))).sendKeys(Keys.ENTER);
 		
-		Thread.sleep(4000);
-		System.out.println("teste 1");
+		Thread.sleep(14000);
+	
 	//	action.doubleClick(gridNumeroPedidoCliente).perform();
 		Thread.sleep(2000);
-		System.out.println("teste 2");
+	
 		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[9]"))).sendKeys(Keys.TAB);
 		//action.doubleClick(gridNumeroPedidoCliente).perform();
 	//	gridNumeroPedidoCliente1.sendKeys("101"); 
