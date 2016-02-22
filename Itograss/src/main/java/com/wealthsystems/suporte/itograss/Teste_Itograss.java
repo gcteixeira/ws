@@ -27,6 +27,7 @@ public class Teste_Itograss {
 		WebElement txtSenha = fluentWait(By.id("formsenha"));
 		WebElement btnLogar = fluentWait(By.id("btnGravar"));
 
+		driver.manage().window().maximize();
 		// logar na aplicação
 
 		txtLogin.sendKeys("REP12");
@@ -110,12 +111,8 @@ public class Teste_Itograss {
 
 		WebElement gripquantidadepedido2 = fluentWait(By.xpath("//*[@id='produtos']/div/div[4]/div/div[2]/div[3]/input"));
 		gripquantidadepedido2.sendKeys("10");
-
 		fluentWait((By.xpath("//*[@id='produtos']/div/div[4]/div"))).sendKeys(Keys.TAB);
-		
 		Thread.sleep(2000);
-		
-		
 		
 		Actions action = new Actions(driver);
 		//Coloca o  Preço final 
@@ -156,9 +153,8 @@ public class Teste_Itograss {
 		//campo valor do frete
 		WebElement valorFrete = fluentWait(By.xpath("//*[@id='entregaPanel']/div/div[4]/div/div/div[3]"));   
 		valorFrete.click();
-		valorFrete.click();
 		action.doubleClick(valorFrete).perform();
-//		fluentWait(By.xpath("//*[@id='entregaPanel']/div/div[4]/div/div/div[3]/input")).sendKeys(Keys.ENTER);
+
 
 
 		WebElement valorFrete1 = fluentWait(By.xpath("//*[@id='entregaPanel']/div/div[4]/div/div/div[3]/input"));
@@ -175,17 +171,17 @@ public class Teste_Itograss {
 		WebElement btnSalvar = fluentWait(By.xpath("//*[@id='btnGravar']/span"));
 		btnSalvar.click();
 
-		// *[@id="jGrowl"]/divx'
-
-		System.out.println("Você chegou ao final do seu teste!");
-
+		System.out.println("Você chegou ao final do pedido!");;
+		
+		System.out.println("teste");
+		
 	}
 
 	public static WebElement fluentWait(final By locator) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
 
-		WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+		WebElement foo = wait.until(new Function<WebDriver, WebElement>() {                                                                                                          
 			public WebElement apply(WebDriver driver) {
 				return driver.findElement(locator);
 			}
@@ -193,4 +189,7 @@ public class Teste_Itograss {
 
 		return foo;
 	};
+	
+
 }
+
