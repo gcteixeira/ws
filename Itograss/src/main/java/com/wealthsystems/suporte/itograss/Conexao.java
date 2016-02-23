@@ -3,45 +3,43 @@ package com.wealthsystems.suporte.itograss;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 
 public class Conexao {
-	private static final String DRIVER = "org.postgres.jdbc.Driver";
-    private static final String URL = "jdbc:postgres://localhost:8400/choppeidanca";
-    private static final String SENHA = "Ws18012001";
-    private static final String USUARIO = "postgres";
 
+	private static Connection conexao;
 
-    public static Connection conectar() {
-        try {
+	private static void criarConexao(){
 
-        	String url ="jdbc:postgresql://localhost:8400/choppeidanca"; 
-        	String usuario="postgres"; 
-        	String senha = "Ws18012001"; 
+		String connectionURL = "jdbc:postgresql://postgresql8402.ws1:8400/" + "public_sim3g_itograss_2015_12_15";
 
-       
+		try {
+
 			Class.forName("org.postgresql.Driver");
-			
 
-        	Connection con=null; 
+			conexao = DriverManager.getConnection(connectionURL, "wssim", "18012001");
 
-        	con=DriverManager.getConnection(url,usuario,senha); 
+			System.out.println("Conexão obtida com sucesso");
 
-        	System.out.println("Conex�o realizada com sucesso."); 
-        	
-        	DriverManager.registerDriver(new org.postgresql.Driver());
-    	return con;
-        } catch (ClassNotFoundException e) {
+		} catch (SQLException ex) {
 
-				e.printStackTrace(); 
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLException: " + ex.getSQLState());
+			System.out.println("SQLException: " + ex.getErrorCode());
 
-        return null;
-    }
+		} catch (Exception e) {
+
+			System.out.println("Não foi possivel conectar com o banco");
+
+		}
+
+	}
+
+	public static Connection getConexao() {
+		if(conexao == null){
+			criarConexao();
+		}
+		return conexao;
+	}
+
+
 }
-
