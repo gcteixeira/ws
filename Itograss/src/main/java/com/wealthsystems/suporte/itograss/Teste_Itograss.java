@@ -1,5 +1,6 @@
 package com.wealthsystems.suporte.itograss;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -16,9 +17,15 @@ import org.openqa.selenium.support.ui.Wait;
 import com.google.common.base.Function;
 
 public class Teste_Itograss {
-	private static final WebDriver driver = new FirefoxDriver();;
+	private static final WebDriver driver = new FirefoxDriver();
+	private static final List<String> List = null;;
 
 	public static void main(String[] args) throws InterruptedException {
+			Validacao validacao;
+			String	valorValidacao = Validacao.resul;  
+		
+		
+		 
 
 		// informa o link para acessar a WEb
 		driver.get("http://localhost:8080/itograss/ID_/login.form.ws");
@@ -175,7 +182,19 @@ public class Teste_Itograss {
 		
 		System.out.println("teste");
 		
-	}
+		WebElement produto = fluentWait(By.cssSelector("#produtos > div > div.slick-viewport > div > div.ui-widget-content.slick-row.even > div.slick-cell.lr.l0.r0.ui-state-highlight.active"));
+		System.out.println(produto);
+		//   #produtos > div > div.slick-viewport > div > div.ui-widget-content.slick-row.even > div.slick-cell.lr.l0.r0.ui-state-highlight.active
+				if (gridpesquisaproduto.equals(valorValidacao)) {
+					System.out.println("Produto Igual o a SQL");
+				}else {
+					System.out.println("Produto diferente do SQL");
+				}
+			}
+
+
+		
+	
 
 	public static WebElement fluentWait(final By locator) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
@@ -188,6 +207,10 @@ public class Teste_Itograss {
 		});
 
 		return foo;
+	}
+
+	public static WebDriver getDriver() {
+		return driver;
 	};
 	
 

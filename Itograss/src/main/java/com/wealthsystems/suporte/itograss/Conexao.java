@@ -8,7 +8,7 @@ public class Conexao {
 
 	private static Connection conexao;
 
-	private static void criarConexao(){
+	private static void criarConexao() {
 
 		String connectionURL = "jdbc:postgresql://postgresql8402.ws1:8400/" + "public_sim3g_itograss_2015_12_15";
 
@@ -35,11 +35,10 @@ public class Conexao {
 	}
 
 	public static Connection getConexao() {
-		if(conexao == null){
+		if (conexao == null) {
 			criarConexao();
 		}
 		return conexao;
 	}
-
 
 }
