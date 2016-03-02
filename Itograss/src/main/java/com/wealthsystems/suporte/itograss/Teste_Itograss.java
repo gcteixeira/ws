@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Teste_Itograss {
 
-	private static final WebDriver driver = new FirefoxDriver();
+//	private static final WebDriver driver = new FirefoxDriver();
 	static final int quantTelas = 20;
 	static List<WebDriver> lista = new ArrayList<WebDriver>();
 
@@ -17,7 +17,8 @@ public class Teste_Itograss {
 			new Thread(new Runnable() {
 				public void run() {
 					try {
-						new GeraPedido().criaPedido(new FirefoxDriver());
+						//new GeraPedido().criaPedido(new FirefoxDriver());
+						new Fazpesquisa().pesquisaPedido(new FirefoxDriver());
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
